@@ -122,6 +122,47 @@ body {
   right: 40px;
 }
 
+.plus {
+  font-size: 32px;
+  color: #777;
+  font-family: arial, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.plus:hover {
+  color: #777;
+}
+
+.plus:active,
+.plus.active {
+  color: #000;
+}
+
+.upload_input{
+  display: block;
+  width: 0;
+  height: 0;
+  -webkit-opacity: 0.0;
+  /* Netscape and Older than Firefox 0.9 */
+  -moz-opacity: 0.0;
+  /* Safari 1.x (pre WebKit!) 老式khtml内核的Safari浏览器*/
+  -khtml-opacity: 0.0;
+  /* IE9 + etc...modern browsers */
+  opacity: .0;
+  /* IE 4-9 */
+  filter:alpha(opacity=0);
+  /*This works in IE 8 & 9 too*/
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  /*IE4-IE9*/
+  filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
+
 .arrow {
   position: absolute;
   top: 50%;

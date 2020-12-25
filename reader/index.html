@@ -16,19 +16,6 @@
 
         <script src="js/libs/zip.min.js"></script>
 
-        <script>
-            "use strict";
-
-            document.onreadystatechange = function () {
-              if (document.readyState == "complete") {
-                window.reader = ePubReader("https://s3.amazonaws.com/moby-dick/", {
-                   restore: true
-                 });
-              }
-            };
-
-        </script>
-
         <!-- File Storage -->
         <!-- <script src="js/libs/localforage.min.js"></script> -->
 
@@ -91,6 +78,10 @@
             <a id="bookmark" class="icon-bookmark-empty">Bookmark</a>
             <a id="setting" class="icon-cog">Settings</a>
             <a id="fullscreen" class="icon-resize-full">Fullscreen</a>
+            <!-- <i class="fa fa-plus-circle fa-4x"></i>
+            <input type="file" id="input" class="icon-cog"></input> -->
+            <a id="selectfile" class="plus">+</a>
+            <input id="input" type="file" class="upload_input"/>
           </div>
         </div>
 
@@ -113,5 +104,28 @@
           </div>
       </div>
       <div class="overlay"></div>
+      <script>
+        var inputElement = document.getElementById("input");
+      
+        inputElement.addEventListener('change', function (e) {
+              var file = e.target.files[0];
+              if (window.FileReader) {
+                  var reader = new FileReader();
+                  reader.onload = openBook;
+                  reader.readAsArrayBuffer(file);
+              }
+          });
+      
+        function openBook(e){
+          var bookData = e.target.result;
+          window.reader = ePubReader(bookData, {restore: true});
+        }
+
+        var selectfileElement = document.getElementById("selectfile");
+        selectfileElement.addEventListener('click', function(){
+          inputElement.click();
+        });
+      
+        </script>      
     </body>
 </html>

@@ -3266,7 +3266,7 @@ EPUBJS.Reader = function(bookPath, _options) {
 		fontSize : "100%"
 	};
 
-	this.book = book = new ePub(this.settings.bookPath, this.settings);
+  this.book = book = new ePub(this.settings.bookPath, this.settings);
 
 	this.offline = false;
 	this.sidebarOpen = false;
