@@ -3723,7 +3723,7 @@ EPUBJS.reader.MetaController = function(meta) {
 
 		document.title = title+" – "+author;
 
-		$title.html(title);
+    $title.html(title);
 		$author.html(author);
 		$dash.show();
 };
@@ -4187,7 +4187,7 @@ EPUBJS.reader.SettingsController = function() {
 
 	$sidebarReflowSetting.on('click', function() {
 		reader.settings.sidebarReflow = !reader.settings.sidebarReflow;
-	});
+  });
 
 	$settings.find(".closer").on("click", function() {
 		hide();

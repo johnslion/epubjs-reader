@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/popup.css">
+        <link rel="stylesheet" href="css/select.css">
 
         <script src="js/libs/jquery.min.js"></script>
 
@@ -78,8 +79,7 @@
             <a id="bookmark" class="icon-bookmark-empty">Bookmark</a>
             <a id="setting" class="icon-cog">Settings</a>
             <a id="fullscreen" class="icon-resize-full">Fullscreen</a>
-            <!-- <i class="fa fa-plus-circle fa-4x"></i>
-            <input type="file" id="input" class="icon-cog"></input> -->
+
             <a id="selectfile" class="plus">+</a>
             <input id="input" type="file" class="upload_input"/>
           </div>
@@ -95,9 +95,23 @@
       <div class="modal md-effect-1" id="settings-modal">
           <div class="md-content">
               <h3>Settings</h3>
-              <div>
+              <div class="setting">
                   <p>
                     <input type="checkbox" id="sidebarReflow" name="sidebarReflow">Reflow text when sidebars are open.
+                  </p>
+                  <p>
+                    Font Size: 
+                    <a id="addFontSize" class="fontAdjust">+</a>
+                    <a id="fontSize">100</a>
+                    <a id="minusFontSize" class="fontAdjust">-</a>
+                  </p>
+                  <p>
+                    Themes:
+                    <select id="themes" class="select-custom">
+                      <option value="light">light</option>
+                      <option value="dark">dark</option>
+                      <option value="tan">tan</option>
+                  </select>
                   </p>
               </div>
               <div class="closer icon-cancel-circled"></div>
@@ -116,16 +130,43 @@
               }
           });
       
-        function openBook(e){
-          var bookData = e.target.result;
-          window.reader = ePubReader(bookData, {restore: true});
-        }
+          function openBook(e) {
+            var bookData = e.target.result;
+            window.reader = ePubReader(bookData, { restore: true });
+            window.reader.rendition.themes.register("dark", "css/themes.css");
+            window.reader.rendition.themes.register("light", "css/themes.css");
+            window.reader.rendition.themes.register("tan", "css/themes.css");
+          }
 
-        var selectfileElement = document.getElementById("selectfile");
-        selectfileElement.addEventListener('click', function(){
-          inputElement.click();
-        });
-      
+          var selectfileElement = document.getElementById("selectfile");
+          selectfileElement.addEventListener('click', function () {
+            inputElement.click();
+          });
+
+          var addFontSizeEle = document.getElementById("addFontSize");
+          var minusFontSizeEle = document.getElementById("minusFontSize");
+          var fontSizeEle = document.getElementById("fontSize");
+          var fontStep = 10;
+
+          addFontSizeEle.addEventListener('click', function () {
+            let fontSize = Number(fontSizeEle.innerText);
+            fontSize += fontStep;
+            fontSizeEle.innerText = fontSize;
+            window.reader.rendition.themes.fontSize(fontSize + "%");
+          })
+
+          minusFontSizeEle.addEventListener('click', function () {
+            let fontSize = Number(fontSizeEle.innerText);
+            fontSize -= fontStep;
+            fontSizeEle.innerText = fontSize;
+            window.reader.rendition.themes.fontSize(fontSize + "%");
+          })
+
+          var themesEle = document.getElementById("themes");
+          themesEle.addEventListener('change', function () {
+            window.reader.rendition.themes.select(themes.value);
+        })
+        
         </script>      
     </body>
 </html>

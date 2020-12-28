@@ -122,6 +122,18 @@ body {
   right: 40px;
 }
 
+.setting {
+  font-size:16px;
+  color: #fff;
+  font-family: Consolas, sans-serif;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .plus {
   font-size: 32px;
   color: #777;

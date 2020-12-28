@@ -1,0 +1,26 @@
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+/*清楚IE选择框的默认样式，隐藏下拉箭头*/
+select::-ms-expand { 
+    display: none; 
+}
+select.select-custom{
+    border: none;
+    outline: none;
+    background: transparent no-repeat right center;
+    padding-right: 1.1em;
+    color: #848484
+}
+select.select-custom option:hover{
+    background-color: #f00;
+}
+.select-custom-wrap{
+    display: inline-block;
+    padding: 0 4px;
+    border: 1px solid #848484;
+}
