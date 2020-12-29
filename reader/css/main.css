@@ -100,11 +100,11 @@ body {
 }
 
 #viewer {
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 85%;
   /* margin-left: 10%; */
   margin: 0 auto;
-  max-width: 1250px;
+  max-width: 1800px;
   z-index: 2;
   position: relative;
   overflow: hidden;
